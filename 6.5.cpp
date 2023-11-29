@@ -5,7 +5,7 @@ using namespace std;
 const int N = 105;
 const int M = 105;
 
-struct Node {
+struct Item {
   int w, c;
 } provider[N][M];
 

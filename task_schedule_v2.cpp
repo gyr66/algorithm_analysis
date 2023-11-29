@@ -5,13 +5,13 @@ using namespace std;
 
 const int N = 1e5 + 5;
 
-struct Node {
+struct Item {
   int val;
   int ddl;
 };
 
 int n, f[N];
-Node a[N];
+Item a[N];
 long long sum = 0;
 
 int getfa(int x) {
@@ -32,7 +32,7 @@ int main() {
   cin >> n;
   for (int i = 1; i <= n; i++) cin >> a[i].val >> a[i].ddl;
   sort(a + 1, a + 1 + n,
-       [](const Node& x, const Node& y) { return x.val > y.val; });
+       [](const Item& x, const Item& y) { return x.val > y.val; });
   for (int i = 1; i <= n; i++) f[i] = i;
   for (int i = 1; i <= n; i++) {
     int t = min(n, a[i].ddl);

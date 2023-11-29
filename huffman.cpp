@@ -8,19 +8,19 @@ using namespace std;
 const int N = 105;
 
 int n;
-struct Node {
+struct Item {
   char ch;
   int freq;
-  Node* left;
-  Node* right;
+  Item* left;
+  Item* right;
   string code;
 };
 
-Node* a[N];
-auto compare = [](const Node* a, const Node* b) { return a->freq > b->freq; };
-priority_queue<Node*, vector<Node*>, decltype(compare)> que(compare);
+Item* a[N];
+auto compare = [](const Item* a, const Item* b) { return a->freq > b->freq; };
+priority_queue<Item*, vector<Item*>, decltype(compare)> que(compare);
 
-void dfs(Node* node) {
+void dfs(Item* node) {
   if (node->left == nullptr && node->right == nullptr) {
     return;
   }
@@ -44,18 +44,18 @@ int main() {
     char ch;
     int freq;
     cin >> ch >> freq;
-    a[i] = new Node{ch, freq, nullptr, nullptr, ""};
+    a[i] = new Item{ch, freq, nullptr, nullptr, ""};
     que.push(a[i]);
   }
   while (que.size() > 1) {
-    Node* x = que.top();
+    Item* x = que.top();
     que.pop();
-    Node* y = que.top();
+    Item* y = que.top();
     que.pop();
-    Node* new_node = new Node{'^', x->freq + y->freq, x, y, ""};
+    Item* new_node = new Item{'^', x->freq + y->freq, x, y, ""};
     que.push(new_node);
   }
-  Node* root = que.top();
+  Item* root = que.top();
   dfs(root);
   for (int i = 1; i <= n; i++) {
     cout << a[i]->ch << " " << a[i]->freq << " " << a[i]->code << endl;

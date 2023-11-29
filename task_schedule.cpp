@@ -5,13 +5,13 @@ using namespace std;
 
 const int N = 1e5 + 5;
 
-struct Node {
+struct Item {
   int val;
   int ddl;
 };
 
 int n, J[N];
-Node a[N];
+Item a[N];
 long long sum = 0;
 
 int main() {
@@ -22,7 +22,7 @@ int main() {
   cin >> n;
   for (int i = 1; i <= n; i++) cin >> a[i].val >> a[i].ddl;
   sort(a + 1, a + 1 + n,
-       [](const Node& x, const Node& y) { return x.val > y.val; });
+       [](const Item& x, const Item& y) { return x.val > y.val; });
   J[1] = 1;
   int k = 1;
   for (int i = 2; i <= n; i++) {
